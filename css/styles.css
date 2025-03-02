@@ -1,151 +1,122 @@
 /* styles.css */
 
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-/* Header Styles */
-header {
-  background-color: #282c34;
-  padding: 10px 0;
-}
-
-header nav ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-}
-
-header nav ul li {
-  margin: 0 15px;
-}
-
-header nav ul li a {
-  color: #61dafb;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-header nav ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Main Content Styles */
-main {
-  padding: 20px;
-}
-
-.intro {
-  text-align: center;
-  padding: 50px 0;
+/* Company Summary Section */
+.company-summary {
+  padding: 40px 20px;
   background-color: #f4f4f4;
 }
 
-.intro h1 {
-  font-size: 3em;
+.company-summary h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Services Overview */
-.services-overview {
-  margin: 50px 0;
+/* Services Summary Section */
+.services-summary {
+  padding: 40px 20px;
 }
 
-.services-overview h2 {
+.services-summary h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.services-summary ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.service {
-  flex: 1 1 30%;
-  background-color: #e2e2e2;
-  margin: 10px;
-  padding: 20px;
-  text-align: center;
-}
-
-.service h3 {
+.services-summary li {
   margin-bottom: 15px;
 }
 
-.service p {
-  font-size: 1em;
-  color: #555;
+.services-summary a {
+  color: #007BFF;
+  text-decoration: none;
 }
 
-/* Achievements */
-.achievements {
-  background-color: #f9f9f9;
-  padding: 30px;
+.services-summary a:hover {
+  text-decoration: underline;
 }
 
-.achievements h2 {
+/* Team Section */
+.our-team {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-member {
+  flex: 1 1 30%;
+  margin: 20px;
+  max-width: 300px;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.team-member h3 {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.team-member p {
+  margin-top: 10px;
+}
+
+/* Additional Content Section */
+.additional-content {
+  padding: 40px 20px;
+  background-color: #eaf4ff;
+}
+
+.additional-content h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.achievements ul {
+.additional-content ul {
   list-style-type: disc;
-  margin-left: 20px;
+  margin-left: 40px;
   font-size: 1.1em;
 }
 
-/* Contact Form */
-.contact-us {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-us form {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-us label {
-  margin-top: 10px;
-}
-
-.contact-us input,
-.contact-us textarea {
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ddd;
-}
-
-.contact-us button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #61dafb;
-  border: none;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-.contact-us button:hover {
-  background-color: #21a1f1;
-}
-
-/* Footer Styles */
-footer {
+/* Call to Action Section */
+.call-to-action {
   background-color: #282c34;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  padding: 60px 20px;
+}
+
+.call-to-action h2 {
+  font-size: 2em;
+}
+
+.call-to-action p {
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.call-to-action .cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  background-color: #61dafb;
+  color: #282c34;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.call-to-action .cta-button:hover {
+  background-color: #21a1f1;
 }
