@@ -1,68 +1,59 @@
 /* scripts.js */
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Form submission handler
-  const form = document.getElementById('contact-form');
-  
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      
-      // Form validation (optional)
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      
-      if (name === '' || email === '' || message === '') {
-        alert('Please fill in all fields.');
-        return;
+  // Navigation button active state (optional enhancement)
+  const currentLocation = location.href;
+  const navButtons = document.querySelectorAll('.nav-button');
+  navButtons.forEach(function(button) {
+    if (button.href === currentLocation) {
+      button.classList.add('active');
+    }
+  });
+
+  // Team member modal functionality
+  const teamMembers = document.querySelectorAll('.team-member');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modal-close');
+  const modalBody = document.getElementById('modal-body');
+
+  if (teamMembers.length > 0) {
+    teamMembers.forEach(function(member) {
+      member.addEventListener('click', function () {
+        const memberName = this.querySelector('h3').textContent;
+        const memberTitle = this.querySelector('p strong').textContent;
+        const memberBio = this.querySelectorAll('p')[1].textContent;
+        const memberImgSrc = this.querySelector('img').getAttribute('src');
+
+        // Populate modal with team member details
+        modalBody.innerHTML = `
+          <img src="${memberImgSrc}" alt="${memberName}" style="width:150px; height:150px; border-radius:50%;">
+          <h2>${memberName}</h2>
+          <p><strong>${memberTitle}</strong></p>
+          <p>${memberBio}</p>
+        `;
+
+        // Display the modal
+        modal.style.display = 'block';
+      });
+    });
+
+    // Close the modal when the user clicks on <span> (x)
+    modalClose.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    window.addEventListener('click', function (event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
       }
-      
-      // Basic email format validation
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
+    });
+
+    // Close modal on 'Esc' key press
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        modal.style.display = 'none';
       }
-      
-      // Handle form submission logic
-      alert('Thank you for contacting us, ' + name + '! We will get back to you soon.');
-      
-      form.reset();
     });
   }
-  
-  // Load header and footer
-  loadComponent('header.html', function (response) {
-    const header = document.createElement('header');
-    header.innerHTML = response;
-    document.body.insertBefore(header, document.body.firstChild);
-  });
-
-  loadComponent('footer.html', function (response) {
-    const footer = document.createElement('footer');
-    footer.innerHTML = response;
-    document.body.appendChild(footer);
-  });
-  
-  // Optional: Add interactivity to team members
-  const teamMembers = document.querySelectorAll('.team-member');
-  teamMembers.forEach(function(member) {
-    member.addEventListener('click', function () {
-      const memberName = this.querySelector('h3').textContent;
-      alert('You clicked on ' + memberName + '. More information can be displayed here.');
-      // Implement additional interactivity if desired
-    });
-  });
 });
-
-function loadComponent(url, callback) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      callback(xhr.responseText);
-    }
-  };
-  xhr.send();
-}
