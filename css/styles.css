@@ -120,3 +120,14 @@
 .call-to-action .cta-button:hover {
   background-color: #21a1f1;
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    max-width: 100%;
+  }
+}
